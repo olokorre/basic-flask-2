@@ -35,10 +35,9 @@ def index():
 @app.route('/login', methods = ('GET', 'POST'))
 def login():
     if request.method == 'GET':
-        if request.method == 'GET':
-            resp = make_response(render_template('login.html'))
-            resp.set_cookie('nick', 'None')
-            return resp
+        resp = make_response(render_template('login.html'))
+        resp.set_cookie('nick', 'None')
+        return resp
     else:
         nick = request.form['nick']
         passwd = request.form['passwd']
@@ -46,7 +45,7 @@ def login():
             resp = make_response(redirect('/'))
             resp.set_cookie('nick', nick)
             return resp
-        return 'cu'
+        return '<div align="center"><h1>VOCÊ NÃO EXISTE!</h1><div>'
 
 @app.route('/register', methods = ('GET', 'POST'))
 def register():
